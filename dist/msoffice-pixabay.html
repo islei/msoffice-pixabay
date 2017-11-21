@@ -137,7 +137,7 @@
     	<!-- Footer -->
     	<div id="pxb-footer-container" class="ms-Grid-row">
     		<a href="https://pixabay.com/">
-    			<i><img src="pixabay-logo.svg"></i>	Free Images
+    			<i><img src="/office/pixabay.svg"></i>	Free Images
     		</a>
     	</div>
     </div>
@@ -290,26 +290,20 @@
              */
             function insertImage(imageUrl) {
                 return __awaiter(this, void 0, void 0, function () {
-                    var _this = this;
                     var exception_1;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
                                 _a.trys.push([0, 2, , 3]);
-                                return [4 /*yield*/, Word.run(function (context) { return __awaiter(_this, void 0, void 0, function () {
-                                        return __generator(this, function (_a) {
-                                            switch (_a.label) {
-                                                case 0: return [4 /*yield*/, toDataURL(imageUrl, function (dataUrl) {
-                                                        var base64result = dataUrl.split(',')[1];
-                                                        context.document.getSelection().insertInlinePictureFromBase64(base64result, "end");
-                                                        context.sync();
-                                                    })];
-                                                case 1:
-                                                    _a.sent();
-                                                    return [2 /*return*/];
-                                            }
+                                return [4 /*yield*/, toDataURL(imageUrl, function (dataUrl) {
+                                        var base64result = dataUrl.split(',')[1];
+                                        Office.context.document.setSelectedDataAsync(base64result, {
+                                            coercionType: Office.CoercionType.Image,
+                                            imageLeft: 50,
+                                            imageTop: 50,
+                                            imageWidth: 400
                                         });
-                                    }); })];
+                                    })];
                             case 1:
                                 _a.sent();
                                 return [3 /*break*/, 3];
