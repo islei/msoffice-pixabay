@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msoffice-pixabay", "msoffice-pixabay\msoffice-pixabay.csproj", "{ACA75A19-0533-4140-8368-524B74046983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "msoffice-pixabayWeb", "msoffice-pixabayWeb\msoffice-pixabayWeb.csproj", "{DDA48D40-B322-4BBA-92B5-3AAC267A53CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ACA75A19-0533-4140-8368-524B74046983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACA75A19-0533-4140-8368-524B74046983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACA75A19-0533-4140-8368-524B74046983}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ACA75A19-0533-4140-8368-524B74046983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACA75A19-0533-4140-8368-524B74046983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACA75A19-0533-4140-8368-524B74046983}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DDA48D40-B322-4BBA-92B5-3AAC267A53CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA48D40-B322-4BBA-92B5-3AAC267A53CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA48D40-B322-4BBA-92B5-3AAC267A53CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA48D40-B322-4BBA-92B5-3AAC267A53CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1A0F2CC-D577-4925-A3A7-867366380550}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,81 @@
+﻿/* Page-specific styling */
+body {
+    margin: 0;
+    padding: 10px;
+}
+
+/* Grid */
+.ms-Grid-col {
+    padding: 0;
+}
+
+/* Search Box */
+.ms-SearchBox, .ms-SearchBox-field {
+    width: 100%;
+}
+
+/* Spinner */
+#pxb-spinner-container {
+    display: none;
+}
+#pxb-spinner-container .ms-Spinner {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+}
+
+/* Result Container */
+#pxb-result-container {
+    margin-top: 10px;
+}
+#pxb-result-container > div:first-child {
+    padding-right: 5px;
+}
+#pxb-result-container > div > img {
+    width: 100%;
+}
+
+/* Pagination */
+#pxb-pagination {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+#pxb-pagination a {
+    color: #333;
+    padding: 5px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+#pxb-pagination a.active {
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Footer */
+#pxb-footer-container {
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+#pxb-footer-container span {
+    margin: 10px 0;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #555;
+    display: block;
+    float: left;
+    padding: 9px 12px 6px;
+    border: 1px solid #ccc;
+}
+#pxb-footer-container i {
+    display: block;
+    width: 68px;
+    height: 18px;
+    overflow: hidden;
+}
+#pxb-footer-container img {
+    width: 94px
+}

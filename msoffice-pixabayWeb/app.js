@@ -1,25 +1,26 @@
-name: Pixabay
-description: Insert free images to your document
-host: POWERPOINT
-api_set: {}
-script:
-    content: |-
+﻿(function () {
+
+    // The initialize function must be run each time a new page is loaded.
+    Office.initialize = function () {
+
+        "use strict";
+
         var CONFIG = {
             API_KEY: "YOUR_API_KEY",
             PIXABAY_URL: "https://pixabay.com/api/",
             RESULTS_PER_PAGE: 20,
         }
 
-        // init search box
+        // initialize search box
         var SearchBoxElement = document.querySelector(".ms-SearchBox");
         var searchBox = new fabric['SearchBox'](SearchBoxElement);
 
-        // init spinner
+        // initialize spinner
         var SpinnerElement = document.querySelector('.ms-Spinner');
         var spinner = new fabric['Spinner'](SpinnerElement);
 
         // on search
-        $('#pxb-searchBox-field').keypress(function (event) {
+        $('#pxb-searchBox-field').keyup(function (event) {
             if (event.keyCode == 13) {
                 var searchVal = $(this).val();
                 if (!searchVal) return;
@@ -27,7 +28,7 @@ script:
             }
         });
 
-        /**
+         /**
          * Search for images on pixabay using the keyword(s)
          */
         function search(searchVal, options) {
@@ -67,7 +68,7 @@ script:
                         perpage: CONFIG.RESULTS_PER_PAGE,
                         onSelect: function (page) {
                             if (page == 1) return;
-                            search(searchVal, {page:page})
+                            search(searchVal, { page: page })
                         },
                         onFormat: formatPaging,
                     });
@@ -98,15 +99,15 @@ script:
         /**
          * Inserts an image at the cursor position
          */
-        async function insertImage(imageUrl) {
+        function insertImage(imageUrl) {
             try {
-                await toDataURL(imageUrl, function (dataUrl) {
+                toDataURL(imageUrl, function (dataUrl) {
                     var base64result = dataUrl.split(',')[1];
                     Office.context.document.setSelectedDataAsync(base64result, {
                         coercionType: Office.CoercionType.Image,
                         imageLeft: 50,
                         imageTop: 50,
-                        imageWidth: 400
+                        imageWidth: 400,
                     })
                 })
             }
@@ -118,7 +119,7 @@ script:
         /**
          * convert image to base64 data uri
          */
-        async function toDataURL(url, callback) {
+        function toDataURL(url, callback) {
             var xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 var reader = new FileReader();
@@ -131,30 +132,7 @@ script:
             xhr.responseType = 'blob';
             xhr.send();
         }
-    language: typescript
-template:
-    content: "<div class=\"ms-Grid\">\n\t<!-- Search Box -->\n\t<div class=\"ms-Grid-row\">\n\t\t<div class=\"ms-Grid-col ms-u-sm12\">\n\t\t\t<div class=\"ms-SearchBox\">\n\t\t\t\t<input id=\"pxb-searchBox-field\" class=\"ms-SearchBox-field\" value=\"\">\n\t\t\t\t<label class=\"ms-SearchBox-label\">\n\t\t\t\t\t<i class=\"ms-SearchBox-icon ms-Icon ms-Icon--Search\"></i>\n\t\t\t\t\t<span class=\"ms-SearchBox-text\">Search</span>\n\t\t\t\t</label>\n\t\t\t\t<div class=\"ms-CommandButton ms-SearchBox-clear ms-CommandButton--noLabel\">\n\t\t\t\t\t<button class=\"ms-CommandButton-button\">\n            \t\t\t<span class=\"ms-CommandButton-icon \">\n\t\t\t\t\t\t\t<i class=\"ms-Icon ms-Icon--Clear\"></i>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\t<span class=\"ms-CommandButton-label\"></span>\n        \t\t\t</button>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t<!-- Spinner -->\n\t<div id=\"pxb-spinner-container\" class=\"ms-Grid-row\">\n\t\t<span class=\"ms-Spinner\"></span>\n\t</div>\n\t<!-- Search Results -->\n\t<div id=\"pxb-result-container\" class=\"ms-Grid-row\">\n\t\t<div class=\"ms-Grid-col ms-u-sm6\"></div>\n\t\t<div class=\"ms-Grid-col ms-u-sm6\"></div>\n\t</div>\n\t<!-- Pagination -->\n\t<div id=\"pxb-pagination\"></div>\n\t<!-- Footer -->\n\t<div id=\"pxb-footer-container\" class=\"ms-Grid-row\">\n\t\t<a href=\"https://pixabay.com/\">\n\t\t\t<i><img src=\"pixabay-logo.svg\"></i> Free Images\n\t\t</a>\n\t</div>\n</div>"
-    language: html
-style:
-    content: "body {\r\n    margin: 0;\r\n    padding: 10px;\r\n}\r\n.ms-Grid-col {\r\n    padding: 0;\r\n}\r\n/* Search Box */\r\n.ms-SearchBox, .ms-SearchBox-field {\r\n   width: 100%;\r\n}\r\n/* Spinner */\r\n#pxb-spinner-container {\r\n    display: none; \r\n}\r\n#pxb-spinner-container .ms-Spinner{\r\n    position: absolute;\r\n    margin: auto;\r\n    left: 0;\r\n    right: 0;\r\n    width: 20px;\r\n    height: 20px;\r\n}\r\n/* Result Container */\r\n#pxb-result-container {\r\n    margin-top: 10px;\r\n}\r\n#pxb-result-container > div:first-child {\r\n    padding-right: 5px;\r\n}\r\n#pxb-result-container > div > img {\r\n    width: 100%;\r\n}\r\n/* Pagination */\r\n#pxb-pagination {\r\n    text-align: center;\r\n    width: 100%;\r\n    margin-top: 20px;\r\n}\r\n#pxb-pagination a { \r\n    color: #333;\r\n    padding: 5px 10px;\r\n    text-align: center;\r\n    cursor: pointer;\r\n}\r\n#pxb-pagination a.active { \r\n    font-weight: 700;\r\n    text-decoration: underline;\r\n}\r\n/* Footer */\r\n#pxb-footer-container {\r\n    border-top: 1px solid #ccc;\r\n    margin-top: 20px;\r\n}\r\n#pxb-footer-container span {\r\n    margin: 10px 0;\r\n    font-size: 12px;\r\n    line-height: 1.7;\r\n    color: #555;\r\n    display: block;\r\n    float: left;\r\n    padding :9px 12px 6px;\r\n    border: 1px solid #ccc;\r\n}\r\n#pxb-footer-container i {\r\n    display: block;\r\n    width: 68px;\r\n    height: 18px;\r\n    overflow: hidden;\r\n}\r\n#pxb-footer-container img {\r\n    width: 94px\r\n}"
-    language: css
-libraries: |-
-    # Office.js
-    https://appsforoffice.microsoft.com/lib/1/hosted/office.js
 
-    # CSS Libraries
-    office-ui-fabric-js@1.4.0/dist/css/fabric.min.css
-    office-ui-fabric-js@1.4.0/dist/css/fabric.components.min.css
+    };
 
-    # NPM libraries
-    core-js@2.4.1/client/core.min.js
-    @microsoft/office-js-helpers@.5.0/dist/office.helpers.min.js
-    jquery@3.1.1
-    office-ui-fabric-js@1.4.0/dist/js/fabric.min.js
-
-    # IntelliSense: @types/library or node_modules paths or URL to d.ts files
-    @types/office-js
-    @types/jquery
-    @types/core-js
-    @microsoft/office-js-helpers@0.7.4/dist/office.helpers.d.ts
-    https://cdnjs.cloudflare.com/ajax/libs/jQuery-Paging/1.2.0/jquery.paging.min.js
+})();
