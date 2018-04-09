@@ -1,4 +1,4 @@
-# msoffice-pixabay
+# office-pixabay
 Pixabay Office 365 Add-In
 
 ![alt screenshot](https://s3-ap-southeast-2.amazonaws.com/islei/office/pixa365/Screenshots/word.png)
