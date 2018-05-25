@@ -1,7 +1,7 @@
 # office-pixabay
 Pixabay Office 365 Add-In
 
-![alt screenshot](https://s3-ap-southeast-2.amazonaws.com/islei/office/pixa365/Screenshots/word.png)
+![alt screenshot](https://islei.com.au/github/office-pixabay/word1.png)
 
 ## API Key
 * Request your api key from https://pixabay.com/en/service/about/api/
